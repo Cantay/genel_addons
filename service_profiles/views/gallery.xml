@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_service_gallery" model="ir.actions.act_window">
+        <field name="name">Gallery</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">service.gallery</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Gallery
+            </p>
+        </field>
+    </record>
+    <menuitem id="gallery_sub_sub_root" name="Gallery" parent="service_profiles_sub_root"
+              action="action_service_gallery" sequence="10"/>
+
+    <record id="business_gallery_view_form" model="ir.ui.view">
+        <field name="name">service.gallery.form</field>
+        <field name="model">service.gallery</field>
+        <field name="arch" type="xml">
+            <form string="Gallery">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar"/>
+                            <field name="business_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="business_gallery_view_tree" model="ir.ui.view">
+        <field name="name">service.gallery.tree</field>
+        <field name="model">service.gallery</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="image"/>
+                <field name="business_id"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<odoo>
+  <data>
+    <template id="assets_frontend" name="library_website_assets" >
+
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link type="text/css" rel="stylesheet" href="http://example.com/image-uploader.min.css" />
+        <script type="text/javascript" src="http://example.com/jquery.min.js"></script>
+        <script type="text/javascript" src="http://example.com/image-uploader.min.js"></script>
+
+    </template>
+  </data>
+</odoo>

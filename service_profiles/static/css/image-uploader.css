@@ -1,0 +1,98 @@
+/*! Image Uploader - v1.0.0 - 15/07/2019
+ * Copyright (c) 2019 Christian Bayer; Licensed MIT */
+
+/* Base style */
+.image-uploader {
+    min-height: 10rem !important;
+    border: 1px solid #d9d9d9 !important;
+    position: relative !important;
+}
+
+/* Style on hover */
+.image-uploader.drag-over {
+    background-color: #f3f3f3 !important;
+}
+
+/* Hide the file input */
+.image-uploader input[type="file"] {
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    z-index: -1 !important;
+    opacity: 0 !important;
+}
+
+/* Text container */
+.image-uploader .upload-text {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    justify-content: center !important;;
+    align-items: center !important;
+    flex-direction: column !important;;
+}
+
+.image-uploader .upload-text i {
+    display: block !important;
+    font-size: 3rem !important;
+    margin-bottom: .5rem !important;
+}
+
+.image-uploader .upload-text span {
+    display: block !important;
+}
+
+/* Hide the text if there is at least one uploaded image */
+.image-uploader.has-files .upload-text {
+    display: none !important;
+}
+
+/* Uploaded images container */
+.image-uploader .uploaded {
+    padding: .5rem !important;
+    line-height: 0 !important;
+}
+
+.image-uploader .uploaded .uploaded-image {
+    display: inline-block !important;
+    width: calc(16.6666667% - 1rem) !important;
+    padding-bottom: calc(16.6666667% - 1rem) !important;
+    height: 0 !important;
+    position: relative !important;
+    margin: .5rem !important;
+    background: #f3f3f3 !important;
+    cursor: default !important;
+}
+
+.image-uploader .uploaded .uploaded-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+}
+
+/* Delete image button */
+.image-uploader .uploaded .uploaded-image .delete-image {
+    display: none !important;
+    cursor: pointer !important;
+    position: absolute !important;
+    top: .2rem !important;
+    right: .2rem !important;
+    border-radius: 50% !important;
+    padding: .3rem !important;
+    background-color: rgba(0, 0, 0, .5) !important;
+    -webkit-appearance: none !important;
+    border: none !important;
+}
+
+.image-uploader .uploaded .uploaded-image:hover .delete-image {
+    display: block !important;
+}
+
+.image-uploader .uploaded .uploaded-image .delete-image i {
+    color: #fff !important;
+    font-size: 1.4rem !important;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension" owl="1">
+        <xpath expr="//ul[hasclass('info-list')]" position="after">
+            <t t-foreach="getComboProducts(props.line)" t-as="combo_line">
+                <div class="combo-product-line">
+                    <ul>
+                        <li>
+                            <div t-esc="combo_line.product"></div>
+                            <div> x <span t-esc="combo_line.quantity"/></div>
+                        </li>
+                    </ul>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

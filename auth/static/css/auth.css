@@ -1,0 +1,18 @@
+.error {
+    color: red;
+    font-size: 70%;
+}
+
+.input-1 {
+    /*background-image: url(../img/check.png);*/
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    border: 1px solid #01cc40;
+}
+
+.input-2 {
+    /*background-image: url(../img/cancel.png);*/
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    border: 1px solid red;
+}

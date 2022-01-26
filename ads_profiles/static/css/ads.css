@@ -1,0 +1,26 @@
+.validation-error-msg {
+    color: red;
+    font-size: 70%;
+}
+
+.valid-input-field {
+    /*background-image: url(../img/check.png);*/
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    border: 1px solid #01cc40;
+}
+
+.invalid-input-field {
+    /*background-image: url(../img/cancel.png);*/
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    border: 1px solid red !important;
+}
+
+#display_image {
+    width: 300px;
+    height: 169px;
+    border: 1px solid rgb(255, 255, 255);
+    background-position: center;
+    background-size: cover;
+}

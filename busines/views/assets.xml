@@ -1,0 +1,11 @@
+<odoo>
+  <template id="mymodule_web_assets" name="My Web Assets"
+            inherit_id="web.assets_frontend">
+     <xpath expr="." position="inside">
+
+       <link rel="stylesheet" type="text/css" href="/busines/static/lib/css/busines.css"/>
+       <script type="text/javascript" src="/busines/static/lib/js/busines.js"></script>
+        
+    </xpath>
+  </template>
+</odoo>

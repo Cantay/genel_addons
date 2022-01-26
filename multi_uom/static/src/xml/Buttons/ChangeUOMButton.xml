@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="multi_uom.ChangeUOMButton" owl="1">
+        <div class="control-button">
+            <i class="fa fa-exchange" role="img" aria-label="Change UOM" title="Change UOM" />
+            Change UOM
+        </div>
+    </t>
+
+</templates>

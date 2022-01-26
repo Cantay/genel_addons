@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="web_menu_business_profile_create" model="website.menu">
+        <field name="name">New Business Profile</field>
+        <field name="url">/business_profile/create</field>
+        <field name="parent_id" ref="website.main_menu" />
+        <field name="sequence" type="int">55</field>
+    </record>
+
+    <record id="web_menu_business_profile" model="website.menu">
+        <field name="name">Busines Profile List</field>
+        <field name="url">/business-profiles/list</field>
+        <field name="parent_id" ref="website.main_menu" />
+        <field name="sequence" type="int">55</field>
+    </record>
+
+    <template id="create_business_profile" name="New Business Profile">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="row my-5">
+                            <div class="col-8 mx-auto">
+                                <form role="form" action="/business_profile/create/action" method="POST">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                    <div class="form-group">
+                                        <label for="name" class="control-label">Title</label>
+                                        <input type="text" name="title" t-att-value="title" id="title" class="form-control" placeholder="Business Name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age" class="control-label">Description</label>
+                                        <input type="text" name="description" t-att-value="description" id="description" class="form-control" placeholder="Description of the business" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="control-label">Business Username</label>
+                                        <input type="text" name="business_username" t-att-value="business_username" id="business_username" class="form-control" placeholder="Business Username" required="required" />
+                                    </div>
+                                    <div class="clearfix oe_login_buttons">
+                                        <button type="submit" class="btn btn-primary pull-right">Create Business Profile</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <record id="business_profile_creation_redirect" model="website.page">
+      <field name="name">Thanks</field>
+      <field name="type" >qweb</field>
+      <field name="url">/business_profile/thankyou</field>
+      <field name="key">busines.business_profile_creation_redirect</field>
+      <field name="arch" type="xml">
+         <t name="Thanks" t-name="busines.business_profile_creation_redirect">
+            <t t-call="website.layout">
+               <div id="wrap">
+                  <div class="container">
+                     <h2 class="text-center text-success">Thanks</h2>
+                     <div class="row">
+                        <div class="col-8 mx-auto">
+                           <div class="alert alert-success">
+                              You have successfully created a New Business Profile.
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </t>
+         </t>
+      </field>
+   </record>
+    -->
+    <!-- <template id="edit_book" name="New Book">
+      <t t-call="website.layout">
+         <div id="wrap">
+            <div class="oe_structure">
+               <div class="container">
+                  <div class="row my-5">
+                     <div class="col-8 mx-auto">
+                        <form role="form" action="/books/edit/action/" method="POST">
+                           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                           <input type="hidden" name="id" t-att-value="id" />
+                           <div class="form-group">
+                              <label for="name" class="control-label">Name</label>
+                              <input type="text" name="name" t-att-value="name" id="name" class="form-control" placeholder="e.g John Doe" required="required" />
+                           </div>
+
+                           <div class="form-group">
+                              <label for="age" class="control-label">Age</label>
+                              <input type="text" name="age" t-att-value="age" id="age" class="form-control" placeholder="20" required="required" />
+                           </div>
+                           <div class="clearfix oe_login_buttons">
+                              <button type="submit" class="btn btn-primary pull-right">New Book</button>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </t>
+   </template>
+
+
+   <template id="edit_book_redirect" name="Edit Book">
+      <t t-call="website.layout">
+         <div id="wrap">
+            <div class="oe_structure">
+               <div class="container">
+                  <h2 class="text-center text-success">Thanks</h2>
+                     <div class="row">
+                        <div class="col-8 mx-auto">
+                           <div class="alert alert-success">
+                              You have successfully updated values
+                           </div>
+                        </div>
+                     </div>
+               </div>
+            </div>
+         </div>
+      </t>
+   </template> -->
+
+
+</odoo>

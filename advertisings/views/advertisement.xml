@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="advertisement_action" model="ir.actions.act_window">
+		<field name="name">Advertisements</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">billionthings.advertisement</field>
+		<field name="view_mode">kanban,tree,form</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create a Advertisement
+			</p>
+		</field>
+	</record>
+
+    <menuitem name="Advertisement" id="advertisement_base_menu" />
+    <menuitem name="Profiles" id="advertisement_menu" parent="advertisement_base_menu" action="advertisement_action" />
+   
+    <!-- form -->
+    <record id="advertisement_view_form" model="ir.ui.view">
+        <field name="name">billionthings.advertisement.form</field>
+        <field name="model">billionthings.advertisement</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="category" />
+                        <field name="date_start" />
+                        <field name="artWork" />
+                        <field name="placement" />
+                        <field name="package" />
+                        <field name="instructions" />
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- tree -->
+    <record id="advertisement_view_tree" model="ir.ui.view">
+        <field name="name">billionthings.advertisement.tree</field>
+        <field name="model">billionthings.advertisement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="category" />
+                <field name="date_start" />
+                <field name="artWork" />
+                <field name="placement" />
+                <field name="package" />
+                <field name="instructions" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- search -->
+    <record id="advertisement_view_search" model="ir.ui.view">
+        <field name="name">billionthings.advertisement.search</field>
+        <field name="model">billionthings.advertisement</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="category" />
+                <field name="date_start" />
+                <field name="artWork" />
+                <field name="placement" />
+                <field name="package" />
+                <field name="instructions" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Kanban view -->
+	<record id="advertisement_kanban" model="ir.ui.view">
+		<field name="name">billionthings.advertisement.kanban</field>
+		<field name="model">billionthings.advertisement</field>
+		<field name="arch" type="xml">
+			<kanban default_order="category asc">
+				<field name="category" />
+                <field name="date_start" />
+                <field name="artWork" />
+                <field name="placement" />
+                <field name="package" />
+                <field name="instructions" />
+				<templates>
+					<t t-name="kanban-box">
+						<div t-attf-class="oe_kanban_global_click">
+							<div class="oe_kanban_details">
+								<ul>
+                                    <li>
+										Placement:
+										<field name="placement" />
+									</li>
+									<li>
+										Category:
+										<field name="category" />
+									</li> 
+								</ul>
+							</div>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+	<!-- End of Kanban view -->
+
+</odoo>

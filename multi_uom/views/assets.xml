@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="index" inherit_id='point_of_sale.index' name="Multi UOM Index">&lt;!DOCTYPE html&gt;
+        <xpath expr="//link[1]" position="before">
+            <link rel="stylesheet" href="/multi_uom/static/src/css/styles.css"/>
+        </xpath>
+    </template>
+    <template id="assets_multi_uom" inherit_id="point_of_sale.assets_common">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/multi_uom/static/src/js/models.js" />
+            <script type="text/javascript" src="/multi_uom/static/src/js/Buttons/ChangeUOMButton.js" />
+            <script type="text/javascript" src="/multi_uom/static/src/js/Popups/MultiUOMPopup.js" />
+            <script type="text/javascript" src="/multi_uom/static/src/js/Screens/PaymentScreen/PaymentScreen.js" />
+            <script type="text/javascript" src="/multi_uom/static/src/js/Screens/TicketScreen/TicketScreen.js" />
+            <script type="text/javascript" src="/multi_uom/static/src/js/Screens/TicketScreen/OrderLineDetails.js" />
+        </xpath>
+    </template>
+</odoo>

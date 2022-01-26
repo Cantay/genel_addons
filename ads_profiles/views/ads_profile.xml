@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_ads_profiles" model="ir.actions.act_window">
+        <field name="name">Ads Profiles</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Ads Profiles
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Ads Profiles" id="profile_base_menu" />
+    <menuitem name="Profiles" id="profile_menu" parent="profile_base_menu" action="action_ads_profiles" />
+
+       <!-- form view-->
+       <record id="view_ads_profile_form_inherited" model="ir.ui.view">
+             <field name="name">res.partner.inherited</field>
+             <field name="model">res.partner</field> 
+             <field name="inherit_id" ref="base.view_partner_form"/>
+             <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="bt_category">Category</field>
+                    <field name="bt_title">Title</field>
+                    <field name="bt_description">Description</field>
+                    <field name="bt_status">Status</field>
+                </xpath>
+             </field>
+       </record>
+      <!--end of form view-->
+
+       <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts" sample="1" multi_edit="1">
+                    
+                    <field name="display_name" string="Name"/>
+                    
+                    <field name="bt_category"/>
+                    <field name="bt_title"/>
+                    <field name="bt_description"/>
+
+                    <field name="phone" class="o_force_ltr" optional="show"/>
+                    <field name="email" optional="show"/>
+                    <field name="city" optional="show"/>
+                    <field name="state_id" optional="hide" readonly="1"/>
+                    <field name="vat" optional="hide" readonly="1"/>
+                    <field name="category_id" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="parent_id" invisible="1" readonly="1"/>
+                    <field name="active" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Search view -->
+	<record id="view_profile_search" model="ir.ui.view">
+		<field name="name">res.partner.search</field>
+		<field name="model">res.partner</field>
+		<field name="arch" type="xml">
+			<search string="Ad profile">
+				<separator />
+				<filter string="Approved" name="approved" domain="[('bt_status', '=', 'approved')]" />
+                <filter string="Pending" name="pending" domain="[('bt_status', '=', 'pending')]" />
+				<filter string="Rejected" name="rejected" domain="[('bt_status', '=', 'rejected')]" />	
+                <group expand="1" string="Group By">
+					<filter string="Name" name="display_name" context="{'group_by':'display_name'}" />
+					<filter string="Phone" name="phone" context="{'group_by':'phone'}" />
+					<filter string="Email" name="email" context="{'group_by':'email'}" />
+					<filter string="Status" name="bt_status" context="{'group_by':'bt_status'}" />
+				</group>
+			</search>
+		</field>
+	</record>
+	<!-- End of Search view -->
+
+
+</odoo>
+

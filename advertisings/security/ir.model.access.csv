@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_billionthings_advertisement,access.billionthings.advertisement,model_billionthings_advertisement,group_service_providers,1,1,1,1

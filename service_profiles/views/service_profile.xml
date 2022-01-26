@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_service_profiles" model="ir.actions.act_window">
+        <field name="name">Service Profiles</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Service Profiles
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="service_profiles_menu_root"
+              name="Service Profiles"
+              active="True"
+              sequence="10"/>
+
+    <menuitem id="service_profiles_sub_root"
+              name="Service Profiles"
+              parent="service_profiles_menu_root"
+              sequence="10"/>
+
+    <menuitem id="service_profiles_sub_sub_root"
+              name="Service Profiles"
+              parent="service_profiles_sub_root"
+              action="action_service_profiles"
+              sequence="10"/>
+
+    <!--    inheriting the form -->
+    <record id="view_service_profile_form_inherited" model="ir.ui.view">
+        <!--    any name can be given    -->
+        <field name="name">service_profile.inherited</field>
+        <!--        model name get it from the form edit view-->
+        <field name="model">res.partner</field>
+        <!--        external ID form edit view -->
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <!--        additional fields can put here that u defined in the extended model-->
+        <field name="arch" type="xml">
+            <field name="type" position="before">
+                <field name="business_slug"/>
+            </field>
+        </field>
+    </record>
+
+<!--    <record id="view_service_profile_view_inherited" model="ir.ui.view">-->
+<!--        &lt;!&ndash;    any name can be given    &ndash;&gt;-->
+<!--        <field name="name">service_profile.inherited</field>-->
+<!--        &lt;!&ndash;        model name get it from the form edit view&ndash;&gt;-->
+<!--        <field name="model">res.partner</field>-->
+<!--        &lt;!&ndash;        external ID form edit view &ndash;&gt;-->
+<!--        <field name="inherit_id" ref="base.view_partner_tree"/>-->
+<!--        &lt;!&ndash;        additional fields can put here that u defined in the extended model&ndash;&gt;-->
+<!--        <field name="arch" type="xml">-->
+<!--            <field name="phone" position="before">-->
+<!--                <field name="business_slug"/>-->
+<!--            </field>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="view_partner_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Contacts" sample="1" multi_edit="1">
+                    <field name="display_name" string="Name"/>
+                    <field name="business_slug" string="Slug"/>
+                    <field name="phone" class="o_force_ltr" optional="show"/>
+                    <field name="email" optional="show"/>
+                    <field name="city" optional="show"/>
+                    <field name="state_id" optional="hide" readonly="1"/>
+                    <field name="vat" optional="hide" readonly="1"/>
+                    <field name="category_id" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="parent_id" invisible="1" readonly="1"/>
+                    <field name="active" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+</odoo>

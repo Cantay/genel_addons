@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="res_group_tree_view_inherited" model="ir.ui.view">
+		<field name="name">business.profile.form.view.inherited</field>
+		<field name="model">business.profile</field>
+		<field name="inherit_id" ref="busines.business_profile_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='status']" position="after">
+				<field name="no" />
+				<field name="addressLine1" />
+				<field name="addressLine2" />
+				<field name="province" />
+				<field name="postalCode" />
+				<field name="telephone1" />
+				<field name="telephone2" />
+				<field name="email" />
+				<field name="locationl" />
+			</xpath>
+		</field>
+	</record>
+
+
+	<template id="create_address" name="New Book">
+		<t t-call="website.layout">
+			<div id="wrap">
+				<div class="oe_structure">
+					<div class="container">
+						<div class="row mt-5">
+							<div class="col-4 bg-info align-items-center">
+								<h2>
+									2.Business Address
+								</h2>
+								<p>
+									Add the location address of your business.
+								</p>
+							</div>
+							<div class="col-8 border border-primary">
+								<div class="row my-5">
+									<div class="col-8 mx-auto">
+										<form role="form" action="/profiles/address/create/action" method="POST">
+											<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+											<input type="hidden" name="businessSlug" t-att-value="businessSlug" id="businessSlug" class="form-control" />
+											<div class="form-group">
+												<label for="no" class="control-label">
+													No<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="no" t-att-value="no" id="no" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="addressLine1" class="control-label">
+													Address Line 1<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="addressLine1" t-att-value="addressLine1" id="addressLine1" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="addressLine2" class="control-label">
+													Address Line 2
+												</label>
+												<input type="text" name="addressLine2" t-att-value="addressLine2" id="addressLine2" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="province" class="control-label">
+													Province<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="province" t-att-value="province" id="province" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="postalCode" class="control-label">
+													Postal Code
+												</label>
+												<input type="text" name="postalCode" t-att-value="postalCode" id="postalCode" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="telephone1" class="control-label">
+													Telephone 1<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="telephone1" t-att-value="telephone1" id="telephone1" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="telephone2" class="control-label">
+													Telephone 2
+												</label>
+												<input type="text" name="telephone2" t-att-value="telephone2" id="telephone2" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="email" class="control-label">
+													Email<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="email" t-att-value="email" id="email" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="locationl" class="control-label">
+													Location
+												</label>
+												<input type="text" name="locationl" t-att-value="locationl" id="locationl" class="form-control" required="required" />
+											</div>
+											<div class="clearfix oe_login_buttons">
+												<button type="submit" class="btn btn-primary pull-right">
+													Create
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-5">
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>

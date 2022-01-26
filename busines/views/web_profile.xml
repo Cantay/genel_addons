@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- creating the menu in the website -->
+	<record id="web_menu_new_book" model="website.menu">
+		<field name="name">New Business Profile</field>
+		<field name="url">/profiles/create/</field>
+		<field name="parent_id" ref="website.main_menu"/>
+		<field name="sequence" type="int">55</field>
+	</record>
+	<template id="create_profile" name="New Book">
+		<t t-call="website.layout">
+			<div id="wrap">
+				<div class="oe_structure">
+					<div class="container">
+						<div class="row mt-5">
+							<div class="col-4 bg-info align-items-center">
+								<h2>
+									1.Business Info
+								</h2>
+								<p>
+									Add here the business description with all details and necessary information.
+								</p>
+							</div>
+							<div class="col-8 border border-primary">
+								<div class="row my-5">
+									<div class="col-8 mx-auto">
+										<form role="form" action="/profiles/create/action" method="POST">
+											<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+											<div class="form-group">
+												<label for=" businessType" class="control-label">
+													Business Type<span class="text-danger">*</span>
+												</label>
+												<select name="businessType" t-att-value="businessType" id="businessType" class="form-control" required="required">
+													<option value="saloon">
+														Saloon
+													</option>
+													<option value="restaurant">
+														Restaurent
+													</option>
+												</select>
+											</div>
+                                 <div class="form-group">
+												<label for="businessName" class="control-label">
+													Business Name<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="businessName" t-att-value="businessName" id="businessName" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="businessSlug" class="control-label">
+													Business Slug<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="businessSlug" t-att-value="businessSlug" id="businessSlug" class="form-control" required="required" />
+											</div>
+											<div class="form-group">
+												<label for="description" class="control-label">
+													Description<span class="text-danger">*</span>
+												</label>
+												<textarea name="description" t-att-value="description" id="description" class="form-control" required="required">
+												</textarea>
+											</div>
+											<div class="form-group">
+												<label for="userId" class="control-label">
+													User Id<span class="text-danger">*</span>
+												</label>
+												<input type="text" name="userId" t-att-value="userId" id="userId" class="form-control" required="required" />
+											</div>
+											<div class="clearfix oe_login_buttons">
+												<button type="submit" class="btn btn-primary pull-right">
+													Next
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-5">
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+	<!-- list view -->
+	<template id="profiles_list_page" name="Business Profile List">
+		<t t-call="website.layout">
+			<div class="container">
+				<h2 class="text-center">
+					Business Profiles List
+				</h2>
+				<ol>
+					<t t-foreach="profiles" t-as="profile">
+						<li>
+							<t t-esc="profile.businessName" />
+						</li>
+					</t>
+				</ol>
+			</div>
+		</t>
+	</template>
+</odoo>

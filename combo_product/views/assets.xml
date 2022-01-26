@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="index" inherit_id='point_of_sale.index' name="Combo Product Index">&lt;!DOCTYPE html&gt;
+            <xpath expr="//link[1]" position="before">
+                <link rel="stylesheet" href="/combo_product/static/src/css/combo_product_styles.css"/>
+            </xpath>
+        </template>
+        <template id="assets" inherit_id="point_of_sale.assets_common">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/combo_product/static/src/js/models.js"/>
+                <script type="text/javascript" src="/combo_product/static/src/js/OrderLine.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="signup_fields" inherit_id="auth_signup.fields" name="Auth Signup Ext form fields">
+       
+       <xpath expr="//div[@class='form-group field-login']" position="replace">
+          <div class="form-group field-login">
+                <label for="login">Email<small class="text-danger">*</small></label>
+                <input onkeyup="emailValidation()" type="text" name="login" t-att-value="login" id="login" class="form-control form-control-sm" autofocus="autofocus"
+                    />   
+                <div class="error" id="emailErr"></div>
+            </div>
+       </xpath>
+
+       <xpath expr="//div[@class='form-group field-name']" position="replace">
+          <div class="form-group field-name">
+                <label for="name">First Name<small class="text-danger">*</small></label>
+                <input onkeyup="firstNameValidation()" type="text" name="name" t-att-value="name" id="name" class="form-control form-control-sm" 
+                     />
+                <div class="error" id="nameErr"></div>
+            </div>
+       </xpath>
+
+       <xpath expr="//div[@class='form-group field-name']" position="after">
+          <div class="form-group last_name">
+                <label for="last_name">Last Name<small class="text-danger">*</small></label>
+                <input onkeyup="lastNameValidation()" type="text" name="last_name" t-att-value="last_name" id="last_name" class="form-control form-control-sm" 
+                     />
+                <div class="error" id="lnameErr"></div>
+          </div>
+       </xpath>
+
+       <xpath expr="//div[@class='form-group last_name']" position="after">
+          <div class="form-group contact_no">
+                <label for="contact_no">Telephone Number<small class="text-danger">*</small></label>
+                <input onkeyup="telephoneValidation()" type="text" name="contact_no" t-att-value="contact_no" id="contact_no"  class="form-control form-control-sm" 
+                     />
+                <div class="error" id="mobileErr"></div>   
+          </div>
+       </xpath>
+
+       <xpath expr="//div[@class='form-group field-password pt-2']" position="replace">
+          <div class="form-group field-password pt-2">
+                <label for="password">Password<small class="text-danger">*</small></label>
+                <input onkeyup="passwordValidation()"  type="password" name="password" t-att-value="password" id="password" class="form-control form-control-sm"
+                    />
+                     <div class="error" id="passwordErr"></div> 
+          </div>
+       </xpath>
+
+       <xpath expr="//div[@class='form-group field-confirm_password']" position="replace">
+            <div class="form-group field-confirm_password">
+                <label for="confirm_password">Confirm Password<small class="text-danger">*</small></label>
+                <input onkeyup="confirm_passwordValidation()"  type="password" name="confirm_password" id="confirm_password" class="form-control form-control-sm" />
+                 <div class="error" id="confirm_passwordErr"></div> 
+            </div>
+       </xpath>
+
+            
+    </template>
+
+
+<template id="signup" inherit_id="auth_signup.signup" name="Auth Signup">
+        
+       <xpath expr="//form[@class='oe_signup_form']" position="replace">
+         
+          <form  class="oe_signup_form"  role="form" method="post" t-if="not message" >
+                  <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <t t-call="auth_signup.fields">
+                        <t t-set="only_passwords" t-value="bool(token and not invalid_token)"/>
+                    </t>
+<!--
+ <p class="alert alert-danger" t-if="error" role="alert">
+                        <t t-esc="error"/>
+                    </p>
+-->
+ 
+                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                    <input type="hidden" name="token" t-att-value="token"/>
+                    <div class="text-center oe_login_buttons pt-3">
+                        <button onclick="validateFormAuth()"  type="submit" id="btnSignUp"  class="btn btn-primary btn-block">Sign up</button>
+                        <a t-attf-href="/web/login?{{ keep_query() }}" class="btn btn-link btn-sm" role="button">Already have an account?</a>
+                        <div class="o_login_auth"/>
+                    </div>
+                </form>
+
+       </xpath>
+
+      
+    </template>
+
+
+
+
+
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="web_menu_new_profile" model="website.menu">
+		<field name="name">Register Business</field>
+		<field name="url">/select/profile/</field>
+		<field name="parent_id" ref="website.main_menu" />
+		<field name="sequence" type="int">55</field>
+	</record>
+
+    <template id="select_profile" name="Select Your Role | billionthings">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="row mt-5">
+                            <div class="col-4 bg-info align-items-center">
+                                <h2>
+									Select the profile you want to create
+								</h2>
+                                <p>
+									please select the type of the profile you want to create
+								</p>
+                            </div>
+                            <div class="col-8 border border-primary">
+                                <div class="row my-5">
+                                    <div class="col-8 mx-auto">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form role="form" action="/profiles/create/" method="POST">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                                    <h2 class="text-center text-primary">Select Your Role</h2>
+                                                    <div class="form-check">
+                                                        <input checked="checked"  class="form-check-input" type="radio" name="role" id="service" value="service" t-att-checked="'checked' or False"/>
+                                                        <label class="form-check-label" for="service">
+                                                          Service
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="role" id="advertiser" value="advertiser" />
+                                                        <label class="form-check-label" for="advertiser">
+                                                          Advertiser
+                                                        </label>
+                                                    </div>
+                                                    <!-- submit next -->
+                                                    <div class="clearfix oe_login_buttons">
+                                                        <button id="profileNextBtn" type="submit" class="btn btn-primary pull-right">
+                                                            Next
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="create_address" name="New Book">
+		<t t-call="website.layout">
+			<div id="wrap">
+				<div class="oe_structure">
+					<div class="container">
+						<div class="row mt-5">
+							<div class="col-4 bg-info align-items-center">
+								<h2>
+									3.Advertising Address
+								</h2>
+								<p>
+									Add the location address of your Ad.
+								</p>
+							</div>
+							<div class="col-8 border border-primary">
+								<div class="row my-5">
+									<div class="col-8 mx-auto">
+										<form role="form" action="/addprofiles/address/create/action" method="POST">
+											<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+											<input type="hidden" name="bt_title" t-att-value="bt_title" id="bt_title" class="form-control" />
+											
+											<!-- street -->
+											<div class="form-group">
+												<label for="street_ads" class="control-label">
+													No
+													<span class="text-danger">*</span>
+												</label>
+												<input onkeyup="addressStreetValidationAds()" type="text" name="street_ads" t-att-value="street_ads" id="street_ads" class="form-control" required="required" />
+												<div class="validation-error-msg" id="validation_street_ads"></div>
+											</div>
+
+											<!-- street2 -->
+											<div class="form-group">
+												<label for="street2_ads" class="control-label">
+													Address Line 1
+													<span class="text-danger">*</span>
+												</label>
+												<input onkeyup="addressStreet2ValidationAds()" type="text" name="street2_ads" t-att-value="street2_ads" id="street2_ads" class="form-control" required="required" />
+											</div>
+											<div class="validation-error-msg" id="validation_street2_ads"></div>
+
+											<!-- city -->
+											<div class="form-group">
+												<label for="city_ads" class="control-label">
+													City
+													<span class="text-danger">*</span>
+												</label>
+												<input onkeyup="addressCityValidationAds()" type="text" name="city_ads" t-att-value="city_ads" id="city_ads" class="form-control" required="required" />
+												<div class="validation-error-msg" id="validation_city_ads"></div>
+											</div>
+
+											<!-- zip -->
+											<div class="form-group">
+												<label for="code_ads" class="control-label">
+													Zip
+													<span class="text-danger">*</span>
+												</label>
+												<input onkeyup="addressZipValidationAds()" type="text" name="code_ads" t-att-value="code_ads" id="code_ads" 
+												class="form-control" required="required" />
+												<div class="validation-error-msg" id="validation_zip_ads"></div>
+											</div>
+
+											<!-- phone -->
+											<div class="form-group">
+												<label for="phone_ads" class="control-label">
+													Telephone 1
+													<span class="text-danger">*</span>
+												</label>
+												<input onkeyup="addressPhoneValidationAds()" type="text" name="phone_ads" t-att-value="phone_ads" id="phone_ads" class="form-control" required="required" />
+												<div class="validation-error-msg" id="validation_tp1_ads"></div>
+											</div>
+
+											<!-- mobile -->
+											<div class="form-group">
+												<label for="mobile_ads" class="control-label">
+													Mobile
+												</label>
+												<input onkeyup="addressMobileValidationAds()" type="text" name="mobile_ads" t-att-value="mobile_ads" id="mobile_ads" class="form-control" />
+												<div class="validation-error-msg" id="validation_tp2_ads"></div>
+											</div>
+
+											<!-- email -->
+											<div class="form-group">
+												<label for="email_ads" class="control-label">
+													Email
+													<span class="text-danger">*</span>
+												</label>
+												<input onkeyup="addressEmailValidationAds()" type="text" name="email_ads" t-att-value="email_ads" id="email_ads" class="form-control" required="required" />
+												<div class="validation-error-msg" id="validation_email_ads"></div>
+											</div>
+
+
+											<div class="form-group">
+												<label for="locationl_ads" class="control-label">
+													Location
+												</label>
+												<input type="text" name="location_ads" t-att-value="locationl_ads" id="location_ads" class="form-control" />
+											</div>
+
+
+											<div class="clearfix oe_login_buttons">
+												<button type="submit" id="adsProfileBtn" class="btn btn-primary pull-right">
+													Create
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-5"></div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>
